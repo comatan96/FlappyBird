@@ -1,4 +1,5 @@
 import pyxel
+
 from random import randrange
 
 # upper pipe 24/0 -> 24/112 u,v
@@ -7,12 +8,13 @@ WIDTH = 255
 BIRD_GAP = 200
 class Pipe:
     def __init__(self):
-        self.pipes = [((i * 80)+400, randrange(-100,0,10)) for i in range(4)]
-
+        self.pipes  = [((i * 80)+400, randrange(-100,0,10)) for i in range(4)]
+        self.active = True
     
     def update(self):
-        for i, v in enumerate(self.pipes):
-            self.pipes[i] = self.update_pipes(*v)
+        if self.active:
+            for i, v in enumerate(self.pipes):
+                self.pipes[i] = self.update_pipes(*v)
 
     def update_pipes(self, x, y):
         x-= 1
