@@ -85,6 +85,7 @@ class App:
         self.display_score()
 
         if self.bird.hit == True:
+            self.score_count = ""
             pyxel.text(WIDTH/2 - (len(SCORE)*2), HEIGHT//3, SCORE + str(self.score_count), 7)
             pyxel.text(WIDTH/2 - (len(RESTART)*2), HEIGHT//2, RESTART, 7)
 
