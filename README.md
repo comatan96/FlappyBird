@@ -1,4 +1,3 @@
 # FlappyBird
-Flappy Bird game using pyxel
+Flappy bird clone using [Pyxel]("https://github.com/kitao/pyxel")
 
-AAA
