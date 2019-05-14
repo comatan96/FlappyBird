@@ -17,7 +17,7 @@ assets = os.path.join(os.getcwd(), os.path.dirname(__file__), 'flappy.pyxel')
 class App:
 
     def __init__(self):
-        pyxel.init(width=WIDTH, height=HEIGHT, caption="Flappy Bird", fps=40)
+        pyxel.init(width=WIDTH, height=HEIGHT, caption="Flappy Bird", fps=35)
         pyxel.load(assets)
         self.reset()
         pyxel.run(self.update, self.draw)
@@ -56,7 +56,8 @@ class App:
             if self.bird.location.x == self.pipe.pipes[i][0]:
                 self.score_count += 1
         # print the current score
-        pyxel.text(WIDTH//2, HEIGHT//3, str(self.score_count), 7)
+        if not self.bird.hit and self.activate_game:
+            pyxel.text(WIDTH//2, HEIGHT//3, str(self.score_count), 7)
 
     ''' Check for hits '''
     def hit(self):
@@ -87,7 +88,6 @@ class App:
         self.display_score()
 
         if self.bird.hit is True:
-            self.score_count = ""
             pyxel.text(WIDTH/2 - (len(SCORE)*2), HEIGHT //
                        3, SCORE + str(self.score_count), 7)
             pyxel.text(WIDTH/2 - (len(RESTART)*2), HEIGHT//2, RESTART, 7)
