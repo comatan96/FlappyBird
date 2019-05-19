@@ -10,15 +10,22 @@ BIRD_GAP = 200
 
 class Pipe:
     def __init__(self):
+
+        # create 4 pipes in random heights inside the screen
+        # the heights are tuples.
         self.pipes = [((i * 80)+400, randrange(-100, 0, 10)) for i in range(4)]
         self.active = True
 
     def update(self):
         if self.active:
+            # keep updating pipes based on their heights
             for i, v in enumerate(self.pipes):
                 self.pipes[i] = self.update_pipes(*v)
 
     def update_pipes(self, x, y):
+        # every frame mive pipe by one pixel
+        # if out of screen, create new pipe
+        # return tuple of (x, y) of the new pipe
         x -= 1
         if x < -80:
             x += WIDTH+80
