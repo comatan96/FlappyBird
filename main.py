@@ -23,6 +23,7 @@ class App:
         pyxel.run(self.update, self.draw)
 
     def reset(self):
+        # make game activate False until bird is operated
         self.activate_game = False
         self.bird = Bird()
         self.pipe = Pipe()
