@@ -6,11 +6,10 @@ GROUND_SCROLL_SPEED = 10
 
 class Background:
     def __init__(self):
-        self.background_scroll = 0
-        self.ground_scroll = 0
         self.active = True
 
     def draw_background(self):
+        
         # if background is active run background, else not
         if self.active:
             offset = pyxel.frame_count % WIDTH

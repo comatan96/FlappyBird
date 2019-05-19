@@ -13,8 +13,6 @@ class Bird:
         self.location = Point(WIDTH//3, HEIGHT//2)
         self._gravity = GRAVITY
         self._velocity = 0
-        # TODO: check jump functionality
-        self.jump = False
         self.hit = False
 
     def update_bird(self):

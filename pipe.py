@@ -2,8 +2,6 @@ import pyxel
 
 from random import randrange
 
-# upper pipe 24/0 -> 24/112 u,v
-# upper pipe w =9 , h = rand
 WIDTH = 255
 BIRD_GAP = 200
 
@@ -18,7 +16,10 @@ class Pipe:
 
     def update(self):
         if self.active:
-            # keep updating pipes based on their heights
+            # keep updating pipes based on their x, y
+            # for loop gets the tuples from pipes list
+            # then puts in pipes the returning value from update_pipes
+            # calling self.update_pipes using tuple unpack (*v)
             for i, v in enumerate(self.pipes):
                 self.pipes[i] = self.update_pipes(*v)
 

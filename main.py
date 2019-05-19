@@ -35,10 +35,6 @@ class App:
     def update(self):
         if self.activate_game:
 
-            # QUIT GAME WITH Q OR ESC
-            if pyxel.btnp(pyxel.KEY_Q):
-                pyxel.quit()
-
             # RESTART GAME WITH R
             if pyxel.btnp(pyxel.KEY_R):
                 self.reset()
@@ -47,6 +43,11 @@ class App:
             self.hit()
             self.pipe.update()
             self.bird.update_bird()
+
+        # QUIT GAME WITH Q OR ESC
+        if pyxel.btnp(pyxel.KEY_Q):
+            pyxel.quit()
+
         # before starting to flap
         if not self.activate_game:
             if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.KEY_UP):
@@ -66,12 +67,16 @@ class App:
     ''' Check for hits '''
     def hit(self):
         for i in range(4):
+
             # 12.5 is the offset of the bird (by pixels)
+            # pipes[i][0] indicates the closest pipe
             if self.pipe.pipes[i][0]+12.5 > self.bird.location.x > self.pipe.pipes[i][0]-12.5:
                 if (
                     self.bird.location.y > self.pipe.pipes[i][1] + BIRD_GAP
                     or self.bird.location.y < self.pipe.pipes[i][1] + 140
                 ):
+
+                    # update hit, pipes and background
                     self.bird.hit = True
                     self.pipe.active = False
                     self.background.active = False
@@ -80,6 +85,7 @@ class App:
             self.pipe.active = False
             self.background.active = False
 
+    ''' Handles the drawing '''
     def draw(self):
         pyxel.cls(0)
         self.background.draw_background()
