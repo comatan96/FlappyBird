@@ -23,8 +23,10 @@ class App:
         pyxel.run(self.update, self.draw)
 
     def reset(self):
+
         # make game activate False until bird is operated
         self.activate_game = False
+
         self.bird = Bird()
         self.pipe = Pipe()
         self.score_count = 0
@@ -32,6 +34,7 @@ class App:
 
     def update(self):
         if self.activate_game:
+
             # QUIT GAME WITH Q OR ESC
             if pyxel.btnp(pyxel.KEY_Q):
                 pyxel.quit()
@@ -80,6 +83,8 @@ class App:
     def draw(self):
         pyxel.cls(0)
         self.background.draw_background()
+
+        # draw instructions for the game on the screen
         if not self.activate_game:
             pyxel.text(WIDTH/2 - len((INS)*2), HEIGHT//3, INS, 7)
         
